@@ -1,18 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <MDXProvider v-bind:components="components">
+    <Example/>
+  </MDXProvider>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import HelloWorld from './components/HelloWorld.vue';
+import {Options, Vue} from 'vue-class-component';
+
+import {MDXProvider} from '@mdx-js/vue'
+import Example from './example.mdx'
+
+console.log(Example);
 
 @Options({
+  data() {
+    return {components: {h1: "h2"}};
+  },
   components: {
-    HelloWorld,
+    MDXProvider,
+    Example,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+}
 </script>
 
 <style>
